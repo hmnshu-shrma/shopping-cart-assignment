@@ -1,13 +1,14 @@
-import TestClass from '../src/js/testClass'
-var expect = require('chai').expect
+import { expect } from 'chai'
+import SayHi from '../src/js/testClass.js'
 
-const testing = new TestClass()
 
-describe("constructor", function() {
 
-    it('should return false', function () {
-        const val = false
-        expect(val).to.be.false
-    })
-
-});
+describe('sum function', () => {
+  // it('sums up two integers', () => {
+  //   expect(sum(1, 2)).to.eql(3)
+  // })
+  it('say hi', () => {
+    const hello = new SayHi()
+    expect(hello.greet).to.be.a('string')
+  })
+})

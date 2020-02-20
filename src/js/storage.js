@@ -1,15 +1,11 @@
 import HttpRequest from './httpRequest'
 
-
-
 /**
 * Creates a new LocalStore.
 * @class LocalStore
 * @classdesc updates delete and modify the data of localstorage
 */
-
 export default class LocalStore {
-
   /**
   * @constructs LocalStore
   * @param {object} cart - cart html element

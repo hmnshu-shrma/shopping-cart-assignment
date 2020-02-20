@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "mocha --require babel-core/register ./test/**/*.js",
+    "test": "mocha --require @babel/register 'test/**/**.js'",
     "clean": "rimraf dist",
     "start": "webpack-dev-server --config webpack.config.js --mode=development",
     "format": "prettier --write \"src/**/*.js\"",
@@ -12,21 +12,22 @@
     "build": "npm run clean && webpack  --mode=production --progress --profile --colors --display-error-details && http-server ./dist -o "
   },
   "dependencies": {
-    "handlebars-loader": "^1.7.1",
     "handlebars": "^4.7.3",
+    "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
     "standard": "^14.3.1",
     "webpack": "^4.41.5"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
     "@babel/runtime": "^7.8.4",
-    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-register": "^6.26.0",

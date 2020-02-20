@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const common = require('./webpack.config.js')
 
@@ -12,10 +13,11 @@ module.exports = merge(common, {
   optimization: {
     minimize: true
   },
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
-        test: /\.(sass|scss)$/,
+        test: /\.s[ac]ss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader
@@ -23,6 +25,18 @@ module.exports = merge(common, {
           'css-loader',
           'postcss-loader',
           'sass-loader'
+        ]
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader'
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        use: [
+          {
+            loader: 'url-loader'
+          }
         ]
       }
     ]
@@ -33,6 +47,9 @@ module.exports = merge(common, {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
+    new CopyWebpackPlugin([
+      { from: './assets/static', to: 'static' }
+    ]),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
       cssProcessor: cssnano,
