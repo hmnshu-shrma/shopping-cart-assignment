@@ -39,7 +39,7 @@ export default class Cart {
       ifExists
     } = isDataPresent
     if (ifExists && items !== 0) {
-      const cartTotal  = this.getTotal(data)
+      const cartTotal  = this.calcutaleTotal(data)
       const templateResponse = {
         items: items,
         data: data,
@@ -50,7 +50,14 @@ export default class Cart {
     return true
   }
 
-  getTotal = (args) => {
+  /**
+  * @function calcutaleTotal
+  * @param {object} data -
+  * this calculates total of the items in the cart
+  * depending upon their quantity
+  */
+
+  calcutaleTotal = (args) => {
     let initPrice = 0
     let itemPrice  = 0
     let total = 0
@@ -130,8 +137,14 @@ export default class Cart {
       data: storageData,
       cartTotal:cartTotal
     }
-    renderHTML('desktop-cart', cartTemplate, newCartData)
-    console.log('cart updated')
+    if(newCartData) {
+      renderHTML('desktop-cart', cartTemplate, newCartData)
+      console.log('cart updated')
+      return true
+    } else {
+      console.error('cart did not  updated')
+      return false
+    }
   }
 
   /**

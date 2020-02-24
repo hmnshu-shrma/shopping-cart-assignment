@@ -1,14 +1,11 @@
 import { expect } from 'chai'
-import SayHi from '../src/js/testClass.js'
+import HttpRequest from '../src/js/http'
 
 
+const cartObj = new Cart()
 
-describe('sum function', () => {
-  // it('sums up two integers', () => {
-  //   expect(sum(1, 2)).to.eql(3)
-  // })
-  it('say hi', () => {
-    const hello = new SayHi()
-    expect(hello.greet).to.be.a('string')
-  })
-})
+describe("add cart item", function() {
+    it("should set Items to an empty array", function() {
+        expect(cartObj.).to.equal(true)
+    });
+});
