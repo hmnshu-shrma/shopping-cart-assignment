@@ -1,13 +1,16 @@
-import TestClass from '../src/js/testClass'
-var expect = require('chai').expect
+// import TestClass from '../src/js/testClass'
+import {
+  assert
+} from 'chai'
 
-const testing = new TestClass()
+describe("constructor", function () {
 
-describe("constructor", function() {
-
-    it('should return false', function () {
-        const val = false
-        expect(val).to.be.false
-    })
+  it('should return number of charachters in a string', function () {
+    assert.equal("Hello".length, 5)
+  })
+  it('should return first charachter of the string', function () {
+    assert.equal("Hello".charAt(0), 'H')
+    //throw {myError:'throwing error to fail test'}
+  })
 
 });
