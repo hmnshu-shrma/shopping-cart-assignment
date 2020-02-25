@@ -1,16 +1,15 @@
-// import TestClass from '../src/js/testClass'
-import {
-  assert
-} from 'chai'
+const { expect, assert } = require('chai')
 
-describe("constructor", function () {
+import GreetUser from '../src/js/testClass'
 
-  it('should return number of charachters in a string', function () {
-    assert.equal("Hello".length, 5)
+var greet = new GreetUser('john','doe')
+describe('initial checks', function(){
+  it('should return string', function(){
+    var userGreeted = greet.sayHello()
+    expect(userGreeted).to.be.a('string')
   })
-  it('should return first charachter of the string', function () {
-    assert.equal("Hello".charAt(0), 'H')
-    //throw {myError:'throwing error to fail test'}
+  it('should return number', function(){
+    var userGreeted = greet.sum(10,20)
+    expect(userGreeted).to.be.a('number')
   })
-
-});
+})
